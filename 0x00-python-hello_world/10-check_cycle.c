@@ -7,13 +7,8 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *turtle, *hare;
+	listint_t *turtle = list, *hare = list;
 
-	if (!list)
-		return (0);
-
-	turtle = list;
-	hare = list;
 	while (turtle->next != NULL && hare->next->next != NULL)
 	{
 		turtle = turtle->next;
