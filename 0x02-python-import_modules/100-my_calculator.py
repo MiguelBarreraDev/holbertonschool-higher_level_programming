@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-from calculator_1 import add, sub, mul, div
-import sys
-
-
 if __name__ == '__main__':
+    import sys
+    from calculator_1 import add, sub, mul, div
+
     match = {'+': add, '-': sub, '*': mul, '/': div}
     argv = sys.argv
     lenArg = len(argv)
