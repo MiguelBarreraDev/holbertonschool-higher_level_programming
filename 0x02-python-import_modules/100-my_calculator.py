@@ -2,9 +2,9 @@
 from calculator_1 import add, sub, mul, div
 import sys
 
-match = {'+': add, '-': sub, '*': mul, '/': div}
 
 if __name__ == '__main__':
+    match = {'+': add, '-': sub, '*': mul, '/': div}
     argv = sys.argv
     lenArg = len(argv)
     # start - validate argument number
