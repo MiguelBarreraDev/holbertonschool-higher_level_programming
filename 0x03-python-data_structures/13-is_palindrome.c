@@ -22,7 +22,6 @@ int is_palindrome(listint_t **head)
 		first = first->next;
 		end = end->next;
 	}
-
 	band = (count == len) ? 1 : 0;
 	
 	return (band); 
@@ -41,8 +40,7 @@ listint_t *reversed_list(listint_t **head)
 	tmp = new_head;
 
 	while (tmp->next != NULL)
-		tmp = tmp->next;
-	
+		tmp = tmp->next;	
 	tmp->next = *head;
 	(*head)->next = NULL;
 
