@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 def no_c(my_string):
-    chrs = "cC"
-    for c in chrs:
-        my_string = my_string.replace(c, '')
-    return my_string
+    idx = 0
+    my_string = list(my_string)
+    for c in my_string:
+        if c == 'c' or c == 'C':
+            my_string[idx] = ''
+        idx += 1
+    return "".join(my_string)
