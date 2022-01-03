@@ -12,21 +12,18 @@ int is_palindrome(listint_t **head)
 	if (*head == NULL)
 		return (1);
 
-	while (end != NULL)
+	while (end->next != NULL)
 	{
-		tmp = end;
 		end = end->next;
 		len++;
 	}
 	len = (len % 2 == 0) ? len :  (len - 1);
-	end = tmp;
-	tmp = NULL;
 	while(ver < len/2)
 	{		
 		if (first->n != end->n)
 			return (0);
-		tmp = first;
 		first = first->next;
+		tmp = first;
 		while(tmp->next != end)
 			tmp = tmp->next;
 		end = tmp;
