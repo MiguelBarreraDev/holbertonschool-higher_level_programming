@@ -1,7 +1,10 @@
 #include "lists.h"
 /**
-* betty comentary
-*/
+ * is_palindrome - checks if a linked list is a palindrome
+ * @head: double pointer to the linked list
+ *
+ * Return: 1 if it is, 0 if not
+ */
 int is_palindrome(listint_t **head)
 {
 	listint_t *first = *head;
@@ -18,7 +21,10 @@ int is_palindrome(listint_t **head)
 		end = end->next;
 		len++;
 	}
-	len = (len % 2 == 0) ? len : (len - 1);
+	if (len % 2 != 0)
+	{
+		len -= 1;
+	}
 	while(ver < len/2)
 	{		
 		if (first->n != end->n)
