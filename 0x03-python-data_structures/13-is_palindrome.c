@@ -9,7 +9,7 @@ int is_palindrome(listint_t **head)
 	size_t len = 0, count = 0;
 
 	if (!head || *head == NULL)
-		return (band);
+		return (1);
 
 	first = *head;
 	end = reversed_list(head);
