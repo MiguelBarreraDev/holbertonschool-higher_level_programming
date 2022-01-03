@@ -1,65 +1,38 @@
 #include "lists.h"
+#include <stdio.h>
 /**
 * betty comentary
 */
 int is_palindrome(listint_t **head)
 {
-	listint_t *first, *end;
-	size_t len = 0, count = 0, save = 0;
+	listint_t *first = *head;
+	listint_t *end = *head;
+	listint_t *tmp = NULL;
+	int len = 0, ver = 0;
 
 	if (*head == NULL)
 		return (1);
 
-	first = *head;
-	end = reversed_list(head);
-	len = len_list(head);
-	save = len;
-	len = (len % 2 == 0) ? len / 2 :  (len - 1) / 2;
-
-	while(len)
+	while (end != NULL)
 	{
-		if (first->n != end->n)
-			return (0);
-		first = first->next;
+		tmp = end;
 		end = end->next;
-		len--;
-	}
-	band = (count == save) ? 1 : 0;
-	return (1); 
-}
-/**
-* betty comentarys
-*/
-listint_t *reversed_list(listint_t **head)
-{
-	listint_t *new_head, *tmp;
-
-	if (!head || *head == NULL)
-	return (NULL);
-	if((*head)->next == NULL)
-	return (*head);
-	new_head = reversed_list(&((*head)->next));
-	tmp = new_head;
-	while (tmp->next != NULL)
-	tmp = tmp->next;	
-	tmp->next = *head;
-	(*head)->next = NULL;
-	return (new_head);
-}
-/**
-* betty comentarys
-*/
-size_t len_list (listint_t **head)
-{
-	listint_t *tmp = *head;
-	size_t len = 0;
-
-	if (!head || *head == NULL)
-	return (0);
-	while(tmp != NULL)
-	{
-		tmp = tmp->next;
 		len++;
 	}
-	return (len);
+	len = (len % 2 == 0) ? len :  (len - 1);
+	end = tmp;
+	tmp = NULL;
+	printf("len -> %d\n", len);
+	while(ver < len/2)
+	{		
+		if (first->n != end->n)
+			return (0);
+		tmp = first;
+		first = first->next;
+		while(tmp->next != end)
+			tmp = tmp->next;
+		end = tmp;
+		ver++;
+	}
+	return (1); 
 }
