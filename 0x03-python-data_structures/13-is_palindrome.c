@@ -10,22 +10,27 @@ int is_palindrome(listint_t **head)
 	int len = 0, ver = 0;
 
 	if (*head == NULL || (*head)->next == NULL)
+	{
 		return (1);
-
+	}
 	while (end->next != NULL)
 	{
 		end = end->next;
 		len++;
 	}
-	len = (len % 2 == 0) ? len :  (len - 1);
+	len = (len % 2 == 0) ? len : (len - 1);
 	while(ver < len/2)
 	{		
 		if (first->n != end->n)
+		{
 			return (0);
+		}
 		first = first->next;
 		tmp = first;
 		while(tmp->next != end)
+		{
 			tmp = tmp->next;
+		}
 		end = tmp;
 		ver++;
 	}
