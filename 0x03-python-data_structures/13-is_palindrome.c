@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdio.h>
 /**
 * betty comentary
 */
@@ -22,7 +21,6 @@ int is_palindrome(listint_t **head)
 	len = (len % 2 == 0) ? len :  (len - 1);
 	end = tmp;
 	tmp = NULL;
-	printf("len -> %d\n", len);
 	while(ver < len/2)
 	{		
 		if (first->n != end->n)
