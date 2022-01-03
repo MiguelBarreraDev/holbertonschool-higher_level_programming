@@ -1,33 +1,29 @@
 #include "lists.h"
-/**
-* betty comentary
-*/
+
+int palindrome(listint_t *head, listint_t *node, int index)
+{
+	int isPalindrome, current;
+
+	if (node == NULL)
+		return (index);
+
+	isPalindrome = palindrome(head, node->next, index + 1);
+
+	if (!isPalindrome)
+		return (0);
+	current = isPalindrome - index;
+	for (; current > 1; current--)
+		head = head->next;
+
+	if (head->n == node->n)
+		return (isPalindrome);
+	return (0);
+}
+
 int is_palindrome(listint_t **head)
 {
-	listint_t *first = *head;
-	listint_t *end = *head;
-	listint_t *tmp = NULL;
-	int len = 0, ver = 0;
+	if (!head || !*head)
+		return (0);
 
-	if (*head == NULL)
-		return (1);
-
-	while (end->next != NULL)
-	{
-		end = end->next;
-		len++;
-	}
-	len = (len % 2 == 0) ? len :  (len - 1);
-	while(ver < len/2)
-	{		
-		if (first->n != end->n)
-			return (0);
-		first = first->next;
-		tmp = first;
-		while(tmp->next != end)
-			tmp = tmp->next;
-		end = tmp;
-		ver++;
-	}
-	return (1); 
+	return (palindrome(*head, *head, 0) ? 1 : 0);
 }
