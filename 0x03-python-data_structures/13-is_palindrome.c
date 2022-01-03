@@ -18,7 +18,7 @@ int is_palindrome(listint_t **head)
 		end = reversed_list(head);
 		len = len_list(head);
 
-		while(first != NULL)
+		while(first != NULL && end != NULL)
 		{
 			if (first->n == end->n)
 				count++;
