@@ -12,6 +12,8 @@ def roman_to_int(roman_string):
     }
     if type(roman_string) != str or roman_string is None:
         return 0
+    if roman_string.count('I') > 3:
+        return 0
     for key in roman_string:
         if key in convert.keys():
             number += convert.get(key)
