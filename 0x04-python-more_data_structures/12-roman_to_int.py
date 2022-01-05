@@ -10,7 +10,6 @@ def roman_to_int(roman_string):
         'D': 500,
         'M': 1000
     }
-    initial = convert[roman_string[0]]
     pos = 0
     current = 0
     after = 0
@@ -19,12 +18,13 @@ def roman_to_int(roman_string):
         return 0
     if roman_string.count('I') > 4:
         return 0
+    initial = convert.get(roman_string[0])
     for letter in roman_string:
         current = convert.get(letter)
         if not current:
             return 0
         after = convert[roman_string[pos + 1]] if pos + 1 < len_roman else 0
-        if after > initial:
+        if after > initial and initial != 1:
             return 0
         if after > current:
             number += after - current
