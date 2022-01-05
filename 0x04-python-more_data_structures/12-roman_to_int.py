@@ -20,6 +20,10 @@ def roman_to_int(roman_string):
     for key in roman_string:
         curr = convert.get(key)
         after = convert.get(roman_string[pos + 1]) if pos + 1 < lg else 0
+        if after > curr:
+            number += after - curr
+            pos += 2
+            break
         if key in convert.keys():
             number += convert.get(key)
         pos += 1
