@@ -10,6 +10,7 @@ def roman_to_int(roman_string):
         'D': 500,
         'M': 1000
     }
+    initial = convert[roman_string[0]]
     pos = 0
     current = 0
     after = 0
@@ -23,6 +24,8 @@ def roman_to_int(roman_string):
         if not current:
             return 0
         after = convert[roman_string[pos + 1]] if pos + 1 < len_roman else 0
+        if after > initial:
+            return 0
         if after > current:
             number += after - current
             break
