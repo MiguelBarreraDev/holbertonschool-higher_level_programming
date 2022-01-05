@@ -15,14 +15,15 @@ def roman_to_int(roman_string):
     }
     if type(roman_string) != str or roman_string is None:
         return 0
-
+    for letter in roman_string:
+        if letter not in convert.keys():
+            return 0
     lg = len(roman_string)
     for key in roman_string:
         curr = convert.get(key)
         after = convert.get(roman_string[pos + 1]) if pos + 1 < lg else 0
         if after > curr:
             number += after - curr
-            pos += 2
             break
         if key in convert.keys():
             number += convert.get(key)
