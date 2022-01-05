@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
     number = 0
-    pos = 0;
+    pos = 0
     curr = 0
     after = 0
     convert = {
