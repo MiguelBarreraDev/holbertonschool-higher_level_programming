@@ -18,7 +18,9 @@ def roman_to_int(roman_string):
         return 0
 
     for letter in roman_string:
-        current = convert[letter]
+        current = convert.get(letter)
+        if not current:
+            return 0
         after = convert[roman_string[pos + 1]] if pos + 1 < len_roman else 0
         if after > current:
             number += after - current
