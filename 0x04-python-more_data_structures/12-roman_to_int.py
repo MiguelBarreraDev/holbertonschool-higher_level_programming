@@ -21,7 +21,7 @@ def roman_to_int(roman_string):
         current = convert[letter]
         after = convert[roman_string[pos + 1]] if pos + 1 < len_roman else 0
         if after > current:
-            number += after - 1
+            number += after - current
             break
         number += convert[letter]
         pos += 1
