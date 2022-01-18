@@ -36,7 +36,9 @@ class Square:
     @position.setter
     def position(self, value):
         x, y = value
-        band = isinstance(x, int) and isinstance(y, int)
+        band = isinstance(value, tuple) \
+            and isinstance(x, int) \
+            and isinstance(y, int)
         if len(value) == 2 and band and x >= 0 and y >= 0:
             self.__position = value
         else:
