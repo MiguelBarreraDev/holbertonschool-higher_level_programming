@@ -1,65 +1,71 @@
 #!/usr/bin/python3
-"""Sinlgy linked list"""
+"""Class Data"""
 
 
 class Node:
-    """
-    class Node that defines a node of a singly linked list
-    """
-    def __init__(self, data=0, next_node=None):
+    """Defines a node of a singly linked list"""
+    def __init__(self, data, next_node=None):
+        """Initilizes the data"""
         self.data = data
         self.next_node = next_node
 
     @property
     def data(self):
+        """Retrieves the data."""
         return self.__data
 
     @data.setter
     def data(self, value):
+        """Sets the data to a value."""
         if not isinstance(value, int):
-            raise TypeError('data must be an integer')
+            raise TypeError("data must be an integer")
         self.__data = value
 
     @property
     def next_node(self):
+        """Retrieves the next_node."""
         return self.__next_node
 
     @next_node.setter
     def next_node(self, value):
-        if isintance(value, Node) or value is None:
+        """Sets the next_node to a value."""
+        if isinstance(value, Node) or value is None:
             self.__next_node = value
         else:
-            raise TypeError('next_node must be a Node object')
+            raise TypeError("next_node must be a Node object")
 
 
 """Class SinglyLinkedList"""
 
 
 class SinglyLinkedList:
-    """
-    class SinglyLinkedList that defines a singly linked list
-    """
+    """Defines a singly linked list"""
     def __init__(self):
+        """Initilizes the data"""
         self.__head = None
 
     def sorted_insert(self, value):
-        node = Node(value)
+        """Inserts a new Node into the correct sorted position
+        in the list (increasing order)
+        """
+        new_node = Node(value)
         if not self.__head or self.__head.data >= value:
-            node.next_node = self.__head
-            self.__head = node
+            new_node.next_node = self.__head
+            self.__head = new_node
         else:
             tmp = self.__head
             while (tmp.next_node and ((tmp.next_node).data < value)):
                 tmp = tmp.next_node
-            node.next_node = tmp.next_node
-            tmp.next_node = node
+            new_node.next_node = tmp.next_node
+            tmp.next_node = new_node
 
     def __str__(self):
-        data = ""
+        """Return a string with singly linked list"""
+        value = ""
         tmp = self.__head
         while tmp:
-            data += str(tmp.data)
+            value += str(tmp.data)
             tmp = tmp.next_node
             if tmp:
-                data += '\n'
-        return data
+                value += '\n'
+        return value
