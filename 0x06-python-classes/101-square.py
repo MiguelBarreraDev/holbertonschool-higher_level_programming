@@ -27,12 +27,14 @@ class Square:
 
     @position.setter
     def position(self, value):
-        x, y = value
-        band = isinstance(x, int) and isinstance(y, int)
-        if len(value) == 2 and band and x >= 0 and y >= 0:
-            self.__position = value
-        else:
+        """Sets the position to a value."""
+        if not isinstance(value, tuple) or len(value) != 2 \
+           or not isinstance(value[0], int) \
+           or not isinstance(value[1], int) \
+           or value[0] < 0 or value[1] < 0:
             raise TypeError('position must be a tuple of 2 positive integers')
+        else:
+            self.__position = value
 
     def area(self):
         return self.__size ** 2
@@ -41,6 +43,8 @@ class Square:
         if self.__size == 0:
             print()
         else:
+            for i in range(self.__size):
+                print()
             for e in range(self.__size):
                 print(' ' * self.__position[0], end="")
                 print('#' * self.__size)
@@ -48,13 +52,13 @@ class Square:
     def __str__(self):
         sq = ""
         if self.__size == 0:
-            print()
+            return sq
         else:
-            for e in range(self.__position[1]):
+            for e in range(self.position[1]):
                 sq += '\n'
-            for e in range(self.__size):
-                sq += ' ' * self.__position[0]
-                sq += '#' * self.__size
-                if e < self.__size - 1:
+            for e in range(self.size):
+                sq += ' ' * self.position[0]
+                sq += '#' * self.size
+                if e != (self.size - 1):
                     sq += '\n'
             return sq
