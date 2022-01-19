@@ -14,10 +14,13 @@ class MagicClass:
         else:
             self.__radius = radius
 
-    def area(self, radius):
+    def area(self):
         """Get area"""
         return (self.__radius ** 2) * math.pi
 
-    def circumference(self, radius):
+    def circumference(self):
         """Get Circumference"""
         return 2 * math.pi * self.__radius
+
+import dis
+dis.dis(MagicClass)
