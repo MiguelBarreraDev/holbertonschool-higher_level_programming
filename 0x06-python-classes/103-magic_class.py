@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """Bytecode of the class"""
-
-
 import math
 
 
 class MagicClass:
     """Defines MagicClass"""
-    def __init__(self, raidus=0):
+    def __init__(self, raidus):
         """ Constructor """
         self.__radius = 0
         if type(radius) is not int and type(radius) is not float:
