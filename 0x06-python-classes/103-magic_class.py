@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Bytecode of the class"""
 import math
+"""Bytecode of the class"""
 
 
 class MagicClass:
-    """Class MagicClass"""
+    """Defines MagicClass"""
     def __init__(self, raidus=0):
         """ Constructor """
         self.__radius = 0
