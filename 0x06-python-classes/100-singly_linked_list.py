@@ -45,18 +45,11 @@ class SinglyLinkedList:
             node.next_node = self.__head
             self.__head = node
         else:
-            """Alert"""
             tmp = self.__head
             while (tmp.next_node and ((tmp.next_node).data < value)):
                 tmp = tmp.next_node
             node.next_node = tmp.next_node
             tmp.next_node = node
-
-    def print_list(self):
-        tmp = self.__head
-        while tmp:
-            print(tmp.data)
-            tmp = tmp.next_node
 
     def __str__(self):
         data = ""
