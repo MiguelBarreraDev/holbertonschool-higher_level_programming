@@ -1,6 +1,11 @@
 #!/usr/bin/python3
-class Node:
+"""Sinlgy linked list"""
 
+
+class Node:
+    """
+    class Node that defines a node of a singly linked list
+    """
     def __init__(self, data=0, next_node=None):
         self.data = data
         self.next_node = next_node
@@ -29,41 +34,36 @@ class Node:
 
 
 class SinglyLinkedList:
-
+    """
+    class SinglyLinkedList that defines a singly linked list
+    """
     def __init__(self):
-        self.head = None
+        self.__head = None
 
     def sorted_insert(self, value):
         node = Node(value)
-        tmp = self.head
+        tmp = self.__head
         current = tmp
-        if self.head is None or tmp.data > value:
-            node.next_node = self.head
-            self.head = node
+        if self.__head is None or tmp.data > value:
+            node.next_node = self.__head
+            self.__head = node
         else:
-            """ 2 -> 5 -> 15 -> None  """
-            """          curr """
-            """     tmp  """
-            """           10->  """
             while current.data < value:
-                if current.next_node is None:
-                    current.next_node = node
-                    return
                 tmp = current
                 current = current.next_node
             node.next_node = current
             tmp.next_node = node
 
     def print_list(self):
-        tmp = self.head
+        tmp = self.__head
         while tmp:
             print(tmp.data)
             tmp = tmp.next_node
 
     def __str__(self):
         data = ""
-        while self.head:
-            data += str(self.head.data)
+        while self.__head:
+            data += str(self.__head.data)
             data += '\n'
-            self.head = self.head.next_node
+            self.__head = self.__head.next_node
         return data
