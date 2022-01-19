@@ -4,8 +4,7 @@ import math
 
 
 class MagicClass:
-    """Class MagicClass
-    """
+    """Class MagicClass"""
     def __init__(self, raidus=0):
         """ Constructor """
         self.__radius = 0
