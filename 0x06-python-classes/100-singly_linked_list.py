@@ -32,6 +32,9 @@ class Node:
             raise TypeError('next_node must be a Node object')
 
 
+"""Class SinglyLinkedList"""
+
+
 class SinglyLinkedList:
     """
     class SinglyLinkedList that defines a singly linked list
@@ -53,8 +56,10 @@ class SinglyLinkedList:
 
     def __str__(self):
         data = ""
-        while self.__head:
-            data += str(self.__head.data)
-            data += '\n'
-            self.__head = self.__head.next_node
+        tmp = self.__head
+        while tmp:
+            data += str(tmp.data)
+            tmp = tmp.next_node
+            if tmp:
+                data += '\n'
         return data
