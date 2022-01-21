@@ -1,0 +1,56 @@
+========================
+The 0-add_integer module
+========================
+
+Using add_integer
+=================
+
+	# Import of the module to test
+	>>> add_integer	 = __import__('0-add_integer').add_integer
+
+Now use this:
+	# A single argument -> integer
+	>>> add_integer(5)
+	103
+
+Now use this:
+	# Two integer arguments -> integer
+	>>> add_integer(4, 10)
+	14
+
+Now use this:
+	# Two float arguments -> number
+	>>> add_integer(0.5, 0.7)
+	0
+
+Now use this:
+	# float and integer arguments -> number
+	>>> add_integer(7, 3.5)
+	10
+
+Now use this:
+	# negative arguments -> integer
+	>>> add_integer(4, -5)
+	-1
+
+Now use this:
+	# None parameter -> raise TypeError
+	>>> add_integer(None, -5)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Now use this:
+	# A string as argument -> raise TypeError
+	>>> add_integer(7, 'a')
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+Now use this:
+	# Two string as argument
+	>>> add_integer('c', '4')
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
