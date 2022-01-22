@@ -1,0 +1,47 @@
+===========================
+The 2-matrix_divided module
+===========================
+
+Using matrix_divided
+====================
+
+	# Import of the module to test
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Now use this:
+	# Two arguments: list of lists and int
+	>>> matrix = [[1, 2 ,3], [-1, 5, 10]]
+	>>> matrix_divided(matrix, 5)
+	[[0.2, 0.4, 0.6], [-0.2, 1.0, 2.0]]
+
+Now use this:
+	# One only argument
+	>>> matrix = [[-5, 5, 1], [4, 0, 0]]
+	>>> matrix_divided(matrix)
+	Traceback (most recent call last):
+	TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Now use this:
+	# No arguments
+	>>> matrix_divided()
+	Traceback (most recent call last):
+	TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Now use this:
+	# Arguments 'None'
+	>>> matrix(None, None)
+	Traceback (most recent call last):
+	TypeError: 'list' object is not callable
+
+Now use this:
+	# empty list
+	>>> matrix = []
+	>>> matrix_divided(matrix, 5)
+	[]
+
+Now use this:
+	# division by zero
+	>>> matrix = [[5, 10, 0], [-1, -2, 3]]
+	>>> matrix_divided(matrix, 0)
+	Traceback (most recent call last):
+	ZeroDivisionError: division by zero
