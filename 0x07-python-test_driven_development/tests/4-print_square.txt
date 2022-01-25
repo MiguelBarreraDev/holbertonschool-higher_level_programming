@@ -1,0 +1,31 @@
+=========================
+The 4-print_square module
+=========================
+
+Using print_square
+==================
+
+	# Import of the module to test
+	>>> print_square = __import__('4-print_square').print_square
+
+Now use this:
+	>>> size = None
+	>>> print_square(size)
+	Traceback (most recent call last):
+	TypeError: size must be an integer
+
+Now use this:
+	>>> size = 0
+	>>> print_square(size)
+
+Now use this:
+	>>> size = -1
+	>>> print_square(size)
+	Traceback (most recent call last):
+	ValueError: size must be >= 0
+
+Now use this:
+	>>> size = -13.5
+	>>> print_square(size)
+	Traceback (most recent call last):
+	TypeError: size must be an integer
