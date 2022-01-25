@@ -26,3 +26,9 @@ Now use this:
 	my name is Quique:
 	<BLANKLINE>
 	Bye
+
+Now use this:
+	>>> text = 10
+	>>> text_indentation(text)
+	Traceback (most recent call last):
+	TypeError: text must be a string
