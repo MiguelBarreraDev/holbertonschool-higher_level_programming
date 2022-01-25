@@ -17,10 +17,12 @@ def text_indentation(text):
             start = end + 1
         end += 1
 
-    lines.append(text[start:])
+    if not text[-1] in ['.', '?', ':']:
+        lines.append(text[start:])
 
     lines = list(map(lambda line: line.strip(), lines))
     for line in lines:
-        print(line)
+        print(line, end="")
         if line != lines[-1]:
+            print()
             print()
