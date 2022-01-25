@@ -1,31 +1,43 @@
-``say_my_name`` module
 ======================
+The 3-say_my_name module
+======================
+
 2. Say my name
 ======================
->>> say_my_name = __import__('3-say_my_name').say_my_name
 
->>> say_my_name("Pedrito", "Clavito")
-My name is Pedrito Clavito
+	#Import of the module to test
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
 
->>> say_my_name(None, "Tejada")
-Traceback (most recent call last):
-TypeError: first_name must be a string
+Now use this:
+	>>> say_my_name("Pedrito", "Clavito")
+	My name is Pedrito Clavito
 
->>> say_my_name("Pepe", None)
-Traceback (most recent call last):
-TypeError: last_name must be a string
+Now use this:
+	>>> say_my_name(None, "Tejada")
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
 
->>> say_my_name("Lifo", 5)
-Traceback (most recent call last):
-TypeError: last_name must be a string
 
->>> say_my_name(5, "Fifo")
-Traceback (most recent call last):
-TypeError: first_name must be a string
+Now use this:
+	>>> say_my_name("Pepe", None)
+	Traceback (most recent call last):
+	TypeError: last_name must be a string
 
->>> say_my_name(, "Barrera")
-Traceback (most recent call last):
-SyntaxError: invalid syntax
+Now use this:
+	>>> say_my_name("Lifo", 5)
+	Traceback (most recent call last):
+	TypeError: last_name must be a string
 
->>> say_my_name("Mono",)
-My name is Mono 
+Now use this:
+	>>> say_my_name(5, "Fifo")
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+Now use this:
+	>>> say_my_name(, "Barrera")
+	Traceback (most recent call last):
+	SyntaxError: invalid syntax
+
+Now use this:
+	>>> say_my_name("Mono",)
+	My name is Mono 
