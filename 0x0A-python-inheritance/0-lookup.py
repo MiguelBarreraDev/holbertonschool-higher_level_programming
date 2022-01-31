@@ -4,6 +4,8 @@
     Class:
         lookup
 """
+
+
 def lookup(obj):
     """ function definition that return a list object
     """
