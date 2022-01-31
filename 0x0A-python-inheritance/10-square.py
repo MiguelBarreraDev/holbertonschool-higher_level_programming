@@ -4,10 +4,12 @@
     Class:
         BaseGeometry
 """
+
+
 class BaseGeometry:
     """ Definition class
     """
-    def integer_validator(self, name:str, value):
+    def integer_validator(self, name: str, value):
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:

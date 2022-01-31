@@ -4,6 +4,8 @@
     Class:
         BaseGeometry
 """
+
+
 class BaseGeometry:
     """ Definition class
     """

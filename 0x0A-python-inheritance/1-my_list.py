@@ -4,6 +4,8 @@
     Class:
         MyList
 """
+
+
 class MyList(list):
     """ Class definition
     """
