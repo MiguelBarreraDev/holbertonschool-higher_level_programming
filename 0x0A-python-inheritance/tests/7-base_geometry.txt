@@ -104,3 +104,15 @@ Now use this:
 	>>> bg.area(10, 5)
 	Traceback (most recent call last):
 	TypeError: area() takes 1 positional argument but 3 were given
+
+Now use this:
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("day", (4, 2))
+	Traceback (most recent call last):
+	TypeError: day must be an integer
+
+Now use this:
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("day", {4, 2})
+	Traceback (most recent call last):
+	TypeError: day must be an integer
