@@ -1,10 +1,23 @@
 #!/usr/bin/python3
-"""Use module for get attributes and methods of an object
+"""Use this module to instantiate objects that refer to geometric figures
 
     Class:
-        lookup
+        BaseGeometry
 """
-def lookup(obj):
-    """ function definition that return a list object
+
+
+Rectangle = __import__("9-rectangle").Rectangle
+""" Import module for inherit the Rectangle class
+"""
+
+
+class Square(Rectangle):
+    """ Class definition
     """
-    return dir(obj)
+    def __init__(self, size):
+        super().integer_validator("size", size)
+        self.__size = size
+        super().__init__(size, size)
+
+    def __str__(self):
+        return "[Square] {}/{}".format(self.__size, self.__size)
