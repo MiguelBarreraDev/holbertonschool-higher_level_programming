@@ -5,7 +5,11 @@
         BaseGeometry
 """
 
+
 Rectangle = __import__("9-rectangle").Rectangle
+""" Import module for inherit the Rectangle class
+"""
+
 
 class Square(Rectangle):
     """ Class definition
