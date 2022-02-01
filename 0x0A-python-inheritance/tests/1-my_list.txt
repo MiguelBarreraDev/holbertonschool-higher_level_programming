@@ -54,7 +54,20 @@ Now use this:
 	Traceback (most recent call last):
 	TypeError: '<' not supported between instances of 'int' and 'str'
 
+# for one check
+
 Now use this:
 	>>> MyList.print_sorted()
 	Traceback (most recent call last):
 	TypeError: print_sorted() missing 1 required positional argument: 'self'
+
+Now use this:
+	>>> my_list = MyList()
+	>>> my_list.append(None)
+	>>> my_list.append(4)
+	>>> my_list.append(2)
+	>>> my_list.append(3)
+	>>> my_list.append(5)
+	>>> my_list.print_sorted()
+	Traceback (most recent call last):
+	TypeError: '<' not supported between instances of 'int' and 'NoneType'
