@@ -6,9 +6,6 @@
 """
 
 
-import json
-
-
 class Student:
     """ Class definition
     """
