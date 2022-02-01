@@ -1,10 +1,19 @@
 #!/usr/bin/python3
-"""Use module for get attributes and methods of an object
+"""Use this module to instantiate classes that inherit from int
 
     Class:
-        lookup
+        MyInt
 """
-def lookup(obj):
-    """ function definition that return a list object
+
+
+class MyInt(int):
+    """ Class definition
     """
-    return dir(obj)
+    def __init__(self, value: int):
+        self.value = value
+
+    def __eq__(self, other):
+        return self.value != other
+
+    def __ne__(self, other):
+        return self.value == other
