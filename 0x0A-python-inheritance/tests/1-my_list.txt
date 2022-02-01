@@ -1,38 +1,60 @@
->>> MyList = __import__('1-my_list').MyList
+====================
+The 1-my_list module
+====================
 
->>> my_list = MyList()
->>> my_list.append(100)
->>> my_list.append(400)
->>> my_list.append(200)
->>> my_list.append(300)
->>> my_list.append(500)
->>> print(my_list)
-[100, 400, 200, 300, 500]
->>> my_list.print_sorted()
-[100, 200, 300, 400, 500]
->>> print(my_list)
-[100, 400, 200, 300, 500]
+Using MyList
+============
 
->>> my_list = MyList()
->>> my_list.append(None)
->>> my_list.append(4)
->>> my_list.append(2)
->>> my_list.append(3)
->>> my_list.append(5)
->>> print(my_list)
-[None, 4, 2, 3, 5]
->>> my_list.print_sorted()
-Traceback (most recent call last):
-TypeError: '<' not supported between instances of 'int' and 'NoneType'
+Import of the module to test
+	>>> MyList = __import__('1-my_list').MyList
 
->>> my_list = MyList()
->>> my_list.append("hola")
->>> my_list.append(4)
->>> my_list.append(2)
->>> my_list.append(3)
->>> my_list.append(5)
->>> print(my_list)
-['hola', 4, 2, 3, 5]
->>> my_list.print_sorted()
-Traceback (most recent call last):
-TypeError: '<' not supported between instances of 'int' and 'str'
+Now use this:
+	>>> my_list = MyList()
+	>>> my_list.append(100)
+	>>> my_list.append(400)
+	>>> my_list.append(200)
+	>>> my_list.append(300)
+	>>> my_list.append(500)
+	>>> print(my_list)
+	[100, 400, 200, 300, 500]
+
+Now use this:
+	>>> my_list.print_sorted()
+	[100, 200, 300, 400, 500]
+
+Now use this:
+	>>> print(my_list)
+	[100, 400, 200, 300, 500]
+
+Now use this:
+	>>> my_list = MyList()
+	>>> my_list.append(None)
+	>>> my_list.append(4)
+	>>> my_list.append(2)
+	>>> my_list.append(3)
+	>>> my_list.append(5)
+	>>> print(my_list)
+	[None, 4, 2, 3, 5]
+
+Now use this:
+	>>> my_list.print_sorted()
+	Traceback (most recent call last):
+	TypeError: '<' not supported between instances of 'int' and 'NoneType'
+
+Now use this:
+	>>> my_list = MyList()
+	>>> my_list.append("hola")
+	>>> my_list.append(4)
+	>>> my_list.append(2)
+	>>> my_list.append(3)
+	>>> my_list.append(5)
+	>>> print(my_list)
+	['hola', 4, 2, 3, 5]
+	>>> my_list.print_sorted()
+	Traceback (most recent call last):
+	TypeError: '<' not supported between instances of 'int' and 'str'
+
+Now use this:
+	>>> MyList.print_sorted()
+	Traceback (most recent call last):
+	TypeError: print_sorted() missing 1 required positional argument: 'self'
