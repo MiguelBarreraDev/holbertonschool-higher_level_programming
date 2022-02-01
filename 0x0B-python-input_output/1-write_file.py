@@ -12,10 +12,5 @@ def write_file(filename="", text=""):
             filename(str): file path to wirte
             text(str): Content to write in the open file
     """
-    try:
-        with open(filename, "x", encoding="UTF-8") as file:
-            file
-    except FileExistsError:
-        with open(filename, "w", encoding="UTF-8") as file:
-            file.write(text)
-    return len(text)
+    with open(filename, "w", encoding="UTF-8") as file:
+        return file.write(text)
