@@ -10,6 +10,7 @@ BaseGeometry = __import__("7-base_geometry").BaseGeometry
 """ Import module for inherits BaseGeometry class
 """
 
+
 class Rectangle(BaseGeometry):
     """ Class definition
     """
