@@ -5,51 +5,46 @@
 
 import sys
 
-
+size = 0
 lim = 0
-arr = []
-metrics = {
-    "size": 0,
-    "status": {
-        "200": 0,
-        "301": 0,
-        "400": 0,
-        "403": 0,
-        "404": 0,
-        "405": 0,
-        "500": 0
-    }
+status = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
 }
 try:
     """Get Data(status_code, size)"""
     for line in sys.stdin:
-        arr.append(line.split())
-        arr[lim] = arr[lim][-2:]
+        line = line.split()
 
-        metrics["size"] += int(arr[lim][-1].replace("\n", ""))
+        size += int(line[-1])
 
         lim += 1
 
-        if lim % 10 == 0:
-            """Count status_code"""
-            for line in arr:
-                if line[0] in sorted(metrics["status"].keys()):
-                    metrics["status"][line[0]] += 1
+        """Count status_code"""
+        code = line[-2]
+        if code in status.keys():
+            status[code] += 1
 
+        if lim % 10 == 0:
             """Output format"""
-            print("File size: {:d}".format(metrics["size"]))
-            for status in sorted(metrics["status"].keys()):
-                if metrics["status"][status] != 0:
-                    print("{}: {:d}".format(status, metrics["status"][status]))
+            print("File size: {:d}".format(size))
+            for code in sorted(status.keys()):
+                if status[code] != 0:
+                    print("{}: {:d}".format(code, status[code]))
 
     """Output format"""
-    print("File size: {:d}".format(metrics["size"]))
-    for status in metrics["status"].keys():
-        if metrics["status"][status] != 0:
-            print("{}: {:d}".format(status, metrics["status"][status]))
+    print("File size: {:d}".format(size))
+    for code in sorted(status.keys()):
+        if status[code] != 0:
+            print("{}: {:d}".format(code, status[code]))
 except KeyboardInterrupt:
-    print("File size: {:d}".format(metrics["size"]))
-    for status in sorted(metrics["status"].keys()):
-        if metrics["status"][status] != 0:
-            print("{}: {:d}".format(status, metrics["status"][status]))
-    raise
+    """Output format"""
+    print("File size: {:d}".format(size))
+    for code in sorted(status.keys()):
+        if status[code] != 0:
+            print("{}: {:d}".format(code, status[code]))
