@@ -33,12 +33,12 @@ try:
         if lim % 10 == 0:
             """Count status_code"""
             for line in arr:
-                if line[0] in metrics["status"].keys():
+                if line[0] in sorted(metrics["status"].keys()):
                     metrics["status"][line[0]] += 1
 
             """Output format"""
             print("File size: {:d}".format(metrics["size"]))
-            for status in metrics["status"].keys():
+            for status in sorted(metrics["status"].keys()):
                 if metrics["status"][status] != 0:
                     print("{}: {:d}".format(status, metrics["status"][status]))
 
@@ -49,7 +49,7 @@ try:
             print("{}: {:d}".format(status, metrics["status"][status]))
 except KeyboardInterrupt:
     print("File size: {:d}".format(metrics["size"]))
-    for status in metrics["status"].keys():
+    for status in sorted(metrics["status"].keys()):
         if metrics["status"][status] != 0:
             print("{}: {:d}".format(status, metrics["status"][status]))
     raise
