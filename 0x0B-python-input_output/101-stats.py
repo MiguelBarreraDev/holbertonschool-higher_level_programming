@@ -1,49 +1,43 @@
 #!/usr/bin/python3
-""" Use the module for reads stdin line by line and computers metrics
-"""
-
-
+"""Module to write a script of dict of Filesize and code_status"""
 import sys
 
 
-lim = 0
-arr = []
-metrics = {
-    "size": 0,
-    "status": {
-        "200": 0,
-        "301": 0,
-        "400": 0,
-        "403": 0,
-        "404": 0,
-        "405": 0,
-        "500": 0
-    }
-}
+filesize = 0
+count = 0
+stc = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0,
+       "404": 0, "405": 0, "500": 0}
 try:
-    """Get Data(status_code, size)"""
     for line in sys.stdin:
-        arr.append(line.split())
-        arr[lim] = arr[lim][-2:]
-        lim += 1
-        if lim == 10:
-            break
+        line = line.split()
 
-    """Count status_code"""
-    for line in arr:
-        if line[0] in metrics["status"].keys():
-            metrics["status"][line[0]] += 1
+        try:
+            filesize += int(line[-1])
+        except Exception:
+            pass
 
-        metrics["size"] += int(line[1].replace("\n", ""))
+        try:
+            code = line[-2]
+            if code in list(stc.keys()):
+                stc[code] += 1
+        except Exception:
+            pass
+        count += 1
 
-    """Output format"""
-    print("File size {:d}".format(metrics["size"]))
-    for status in metrics["status"].keys():
-        if metrics["status"][status] != 0:
-            print("{}: {:d}".format(status, metrics["status"][status]))
+        if count % 10 == 0:
+            print("File size: {:d}".format(filesize))
+            for key in sorted(stc.keys()):
+                if stc[key] != 0:
+                    print("{:s}: {:d}".format(key, stc[key]))
+
+    print("File size: {:d}".format(filesize))
+    for key in sorted(stc.keys()):
+        if stc[key] != 0:
+            print("{}: {:d}".format(key, stc[key]))
+
 except KeyboardInterrupt:
-    print("File size {:d}".format(metrics["size"]))
-    for status in metrics["status"].keys():
-        if metrics["status"][status] != 0:
-            print("{}: {:d}".format(status, metrics["status"][status]))
+    print("File size: {:d}".format(filesize))
+    for key in sorted(stc.keys()):
+        if stc[key] != 0:
+            print("{:s}: {:d}".format(key, stc[key]))
     raise
