@@ -21,30 +21,36 @@ try:
     for line in sys.stdin:
         line = line.split()
 
-        size += int(line[-1])
+        try:
+            size += int(line[-1])
+        except BaseException:
+            pass
+
+        try:
+            """Count status_code"""
+            code = line[-2]
+            if code in list(status.keys()):
+                status[code] += 1
+        except BaseException:
+            pass
 
         lim += 1
-
-        """Count status_code"""
-        code = line[-2]
-        if code in status.keys():
-            status[code] += 1
 
         if lim % 10 == 0:
             """Output format"""
             print("File size: {:d}".format(size))
-            for code in sorted(status.keys()):
-                if status[code] != 0:
-                    print("{}: {:d}".format(code, status[code]))
+            for key in sorted(status.keys()):
+                if status[key] != 0:
+                    print("{}: {:d}".format(key, status[key]))
 
     """Output format"""
     print("File size: {:d}".format(size))
-    for code in sorted(status.keys()):
-        if status[code] != 0:
-            print("{}: {:d}".format(code, status[code]))
+    for key in sorted(status.keys()):
+        if status[key] != 0:
+            print("{}: {:d}".format(key, status[key]))
 except KeyboardInterrupt:
     """Output format"""
     print("File size: {:d}".format(size))
-    for code in sorted(status.keys()):
-        if status[code] != 0:
-            print("{}: {:d}".format(code, status[code]))
+    for key in sorted(status.keys()):
+        if status[key] != 0:
+            print("{}: {:d}".format(key, status[key]))
