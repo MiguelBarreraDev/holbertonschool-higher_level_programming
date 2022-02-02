@@ -26,6 +26,8 @@ try:
         arr.append(line.split())
         arr[lim] = arr[lim][-2:]
 
+        metrics["size"] += int(arr[lim][-1].replace("\n", ""))
+
         lim += 1
 
         if lim % 10 == 0:
@@ -34,21 +36,19 @@ try:
                 if line[0] in metrics["status"].keys():
                     metrics["status"][line[0]] += 1
 
-                metrics["size"] += int(line[1].replace("\n", ""))
-
             """Output format"""
-            print("File size {:d}".format(metrics["size"]))
+            print("File size: {:d}".format(metrics["size"]))
             for status in metrics["status"].keys():
                 if metrics["status"][status] != 0:
                     print("{}: {:d}".format(status, metrics["status"][status]))
 
     """Output format"""
-    print("File size {:d}".format(metrics["size"]))
+    print("File size: {:d}".format(metrics["size"]))
     for status in metrics["status"].keys():
         if metrics["status"][status] != 0:
             print("{}: {:d}".format(status, metrics["status"][status]))
 except KeyboardInterrupt:
-    print("File size {:d}".format(metrics["size"]))
+    print("File size: {:d}".format(metrics["size"]))
     for status in metrics["status"].keys():
         if metrics["status"][status] != 0:
             print("{}: {:d}".format(status, metrics["status"][status]))
