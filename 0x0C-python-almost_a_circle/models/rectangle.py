@@ -10,9 +10,26 @@ from .base import Base
 
 
 class Rectangle(Base):
-    """ Class definition
+    """ Rectangle class definition to instance objects with attributes
+        related to mathematical operations
+
+        Instances:
+            Members:
+                __width(int): Width of the object
+                __height(int): Height of the object
+                __x(int): Coordinates on the horizontal axis
+                __y(int): Coordinates on the vertical axis
+                id(int): Unique indentifier of the instance
+
+            Methods:
+                Special:
+                    __init__, __str__
+
+                Adding:
+                    width, heiht, x, y, area, diplay, to_dictionary
     """
     def __init__(self, width, height, x=0, y=0, id=None):
+        """ Constructor method to initialize fields at istantiate time """
         super().__init__(id)
         self.width = width
         self.height = height
@@ -21,10 +38,15 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """ Getter method to access a private variable(__width) """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """ Setter method to add or modify a private variable(__height)
+            Args:
+                value(int): New value fot the __width member
+        """
         if type(value) is not int:
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -71,6 +93,7 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
+        """ Draw the object in console """
         print("\n" * self.y, end="")
         print("\n".join(
             [" "*self.x + "".join(
@@ -78,19 +101,31 @@ class Rectangle(Base):
             ) for i in range(self.height)]))
 
     def __str__(self):
+        """ Represent the objetc members in string format """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.x, self.y, self.width, self.height
         )
 
     def update(self, *args, **kwargs):
+        """ Modify the value of current members
+            Args:
+                args(list or iterable): Argument list without keyword
+                Kwargs(dict): Argument list with keyword
+        """
         if args is not None and len(args) != 0:
-            for i in range(len(args)):
-                setattr(self, (list(self.__dict__.keys()))[i], args[i])
+            members = zip(
+                ["id", "width", "height", "x", "y", "id"],  # keys
+                list(args)  # values
+            )
+            for key, value in members:
+                setattr(self, key, value)
         else:
             for attr in kwargs:
-                setattr(self, attr, kwargs[attr])
+                if hasattr(self, attr):
+                    setattr(self, attr, kwargs[attr])
 
     def to_dictionary(self):
+        """ Get a dict(key/value) object with the members of the instance """
         return dict(zip(
             ["id", "width", "height", "x", "y"],
             [self.id, self.width, self.height, self.x, self.y]

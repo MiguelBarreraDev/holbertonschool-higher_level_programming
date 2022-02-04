@@ -11,11 +11,28 @@ import csv
 
 
 class Base:
-    """ Class definition
+    """ Base class definition to be inherit
+
+        Inherit Instances:
+            Members:
+                id(int): Unique indentifier of the instance
+
+            Methods:
+                Special:
+                    __init__
+
+        Class Attributes:
+            __nb_objects(int): private attribute to be assigned as id, if not
+            received as instance parameter
+
+        Class methods:
+            save_to_file, create, load_from_file,
+            save_to_file_csv, load_from_file_csv
     """
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """ Constructor method to initialize fields at istantiate time """
         if id is not None:
             self.id = id
         else:
@@ -24,16 +41,20 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """ Parse to list object in json """
         return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """ Store a list with representations objects in a file
+            Args:
+                list_objs: list to save
+        """
         filename = "{}.json".format(cls.__name__)
-        if list_objs is None:
-            with open(filename, "w", encoding="UTF-8") as file:
+        with open(filename, "w", encoding="UTF-8") as file:
+            if list_objs is None:
                 file.write(cls.to_json_string([]))
-        else:
-            with open(filename, "w", encoding="UTF-8") as file:
+            else:
                 file.write(
                     cls.to_json_string(
                         [obj.to_dictionary() for obj in list_objs]
@@ -42,6 +63,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """ Parse json to list object  """
         obj = json.loads(json_string)
         if json_string is None or len(obj) == 0:
             return []
@@ -50,12 +72,16 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        """ Create object with the members store in dictionary """
         dummy = cls(15, 20)
         dummy.update(**dictionary)
         return dummy
 
     @classmethod
     def load_from_file(cls):
+        """ Load instances based on the list dictionaries
+            stored in the file with json format
+        """
         filename = "{}.json".format(cls.__name__)
         llist = []
         try:
@@ -72,6 +98,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """ Store a representation object in csv format in a file """
         filename = "{}.csv".format(cls.__name__)
         with open(filename, "w") as file:
             writer = csv.writer(file, delimiter=",")
@@ -82,6 +109,9 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """ Load instances based on the list of dictionaries
+            stored in the file with csv format
+        """
         llist = []
         filename = "{}.csv".format(cls.__name__)
         with open(filename, "r") as file:
