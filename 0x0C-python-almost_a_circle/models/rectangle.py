@@ -6,7 +6,7 @@
 """
 
 
-from .base import Base
+from models.base import Base
 
 
 class Rectangle(Base):
@@ -114,7 +114,7 @@ class Rectangle(Base):
         """
         if args is not None and len(args) != 0:
             members = zip(
-                ["id", "width", "height", "x", "y", "id"],  # keys
+                ["id", "width", "height", "x", "y"],  # keys
                 list(args)  # values
             )
             for key, value in members:
