@@ -64,7 +64,7 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """ Parse json to list object  """
-        if json_string is None or obj == []:
+        if json_string is None or json_string == "":
             return []
         else:
             obj = json.loads(json_string)
