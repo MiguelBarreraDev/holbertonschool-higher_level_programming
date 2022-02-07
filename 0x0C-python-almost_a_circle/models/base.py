@@ -47,7 +47,7 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """ Store a list with representations objects in a file
-            Args:
+        Args:
                 list_objs: list to save
         """
         filename = "{}.json".format(cls.__name__)
@@ -73,14 +73,14 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ Create object with the members store in dictionary """
-        dummy = cls(15, 20)
+        dummy = cls(10, 5, 20)
         dummy.update(**dictionary)
         return dummy
 
     @classmethod
     def load_from_file(cls):
         """ Load instances based on the list dictionaries
-            stored in the file with json format
+        stored in the file with json format
         """
         filename = "{}.json".format(cls.__name__)
         llist = []
@@ -110,15 +110,21 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """ Load instances based on the list of dictionaries
-            stored in the file with csv format
+        stored in the file with csv format
         """
         llist = []
         filename = "{}.csv".format(cls.__name__)
-        with open(filename, "r") as file:
-            " reader(list): contain the rows of the file"
-            reader = csv.reader(file)
-            for fields in reader:
-                " obj(dict): key/value of the instance of cls "
+        try:
+            with open(filename, "r", encoding="UTF-8") as file:
+                file.read()
+        except FileNotFoundError:
+            return llist
+        else:
+            with open(filename, "r") as file:
+                " reader(list): contain the rows of the file"
+                reader = csv.reader(file)
+                for fields in reader:
+                    " obj(dict): key/value of the instance of cls "
                 for obj in fields:
                     obj = json.loads(obj.replace("\'", "\""))
                     llist.append(cls.create(**obj))
