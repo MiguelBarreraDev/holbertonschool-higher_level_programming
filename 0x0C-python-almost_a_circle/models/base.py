@@ -75,7 +75,10 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ Create object with the members store in dictionary """
-        dummy = cls(10, 5, 20)
+        if cls.__name__ == 'Rectangle':
+            dummy = cls(1, 1)
+        elif cls.__name__ == 'Square':
+            dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
 
