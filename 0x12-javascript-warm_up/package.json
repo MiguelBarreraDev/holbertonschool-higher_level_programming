@@ -1,0 +1,28 @@
+{
+	"name": "0x12-javascript-warm_up",
+	"version": "1.0.0",
+	"description": "0x12. JavaScript - Warm up",
+	"main": "0-javascript_is_amazing.js",
+	"type": "module",
+	"scripts": {
+		"test": "semistandard --verbose | snazzy"
+	},
+	"keywords": [],
+	"author": "MiguelBarreraDev",
+	"license": "ISC",
+	"semistandard": {
+		"ignore": [
+			".gitignore",
+			"node_modules/**",
+			".*",
+			"**/out/",
+			"/lib/select2/",
+			"/lib/ckeditor/",
+			"tmp.js"
+		]
+	},
+	"devDependencies": {
+		"semistandard": "^16.0.1",
+		"snazzy": "^9.0.0"
+	}
+}
