@@ -1,2 +1,3 @@
-myVar = 333
-module.exports = { myVar }
+#!/usr/bin/node
+myVar = 333;
+module.exports = { myVar };
