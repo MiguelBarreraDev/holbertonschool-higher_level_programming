@@ -4,4 +4,4 @@ const callMeMoby = function (x, clb) {
     clb();
   }
 };
-exports.callMeMoby = callMeMoby;
+export { callMeMoby };
