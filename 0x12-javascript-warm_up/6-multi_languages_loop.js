@@ -1,3 +1,5 @@
 #!/usr/bin/node
-const texts = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
-texts.forEach((e) => console.log(e));
+const content = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+for (const itr in content) {
+  console.log(content[itr]);
+}
