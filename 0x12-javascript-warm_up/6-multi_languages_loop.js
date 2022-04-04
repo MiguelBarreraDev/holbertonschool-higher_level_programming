@@ -1,3 +1,4 @@
 #!/usr/bin/node
-['C is fun', 'Python is cool', 'JavaScript is amazing']
-  .forEach(e => console.log(e));
+for (const text of ['C is fun', 'Python is cool', 'JavaScript is amazing']) {
+  console.log(text);
+}
