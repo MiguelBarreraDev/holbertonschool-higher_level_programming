@@ -22,9 +22,14 @@ if __name__ == '__main__':
     # Query
     QUERY = "SELECT * FROM states WHERE name = '{}' ORDER BY id"\
         .format(argv[4])
+    print(QUERY)
     cur.execute(QUERY)
 
     # Show
     rows = cur.fetchall()
     for row in rows:
         print(row)
+
+    # Clean up
+    cur.close()
+    db.close()
