@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     # Query
     rows = session.query(State).all()
-    
+
     # Show response
     for row in rows:
         print(row.id, row.name, sep=": ")
