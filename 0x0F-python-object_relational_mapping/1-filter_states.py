@@ -21,7 +21,9 @@ if __name__ == '__main__':
     cur = db.cursor()
 
     # Querys
-    cur.execute("SELECT * FROM states WHERE name REGEXP '^N' ORDER BY id ASC")
+    cur.execute(
+        "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
+    )
 
     # Show
     rows = cur.fetchall()
