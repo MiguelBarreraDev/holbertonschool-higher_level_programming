@@ -20,7 +20,8 @@ if __name__ == '__main__':
     cur = db.cursor()
 
     # Query
-    q = "SELECT * FROM states WHERE name = '{}' ORDER BY id".format(argv[4])
+    q = "SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id"\
+        .format(argv[4])
     cur.execute(q)
 
     # Show
