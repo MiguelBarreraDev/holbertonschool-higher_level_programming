@@ -23,4 +23,7 @@ if __name__ == "__main__":
     first_obj = session.query(State).first()
 
     # Show response
-    print(first_obj.id, first_obj.name, sep=": ")
+    if first_obj:
+        print(first_obj.id, first_obj.name, sep=": ")
+    else:
+        print("Nothing")
