@@ -20,10 +20,8 @@ if __name__ == '__main__':
     cur = db.cursor()
 
     # Query
-    QUERY = "SELECT * FROM states WHERE name = '{}' ORDER BY id"\
-        .format(argv[4])
-    print(QUERY)
-    cur.execute(QUERY)
+    q = "SELECT * FROM states WHERE name = '{}' ORDER BY id".format(argv[4])
+    cur.execute(q)
 
     # Show
     rows = cur.fetchall()
