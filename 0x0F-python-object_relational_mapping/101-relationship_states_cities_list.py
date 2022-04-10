@@ -12,7 +12,7 @@ if __name__ == '__main__':
     # Config engine
     config = [argv[1], argv[2], argv[3]]
     engine = create_engine(
-        "mysql+mysqldb://{}:{}@localhost/{}".format(*config)
+        "mysql+mysqldb://{}:{}@localhost:3306/{}".format(*config)
     )
     Base.metadata.create_all(engine)
 
