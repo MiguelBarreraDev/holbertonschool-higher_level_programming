@@ -26,7 +26,7 @@ if __name__ == '__main__':
     # Show result
     for row in rows_C:
         rows_S = session.query(State).filter(State.id == row.state_id)
-        print(rows_S[0].name, row.id, row.name)
+        print(f"{rows_S[0].name}: ({row.id}) {row.name}")
 
     # End session
     session.close()
