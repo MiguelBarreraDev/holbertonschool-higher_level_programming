@@ -24,8 +24,6 @@ if __name__ == '__main__':
     rows = session.query(State).join(City).order_by(State.id, City.id)\
         .filter(City.state_id == State.id)
 
-        
-
     # Show result
     for row in rows:
         print(row.id, row.name, sep=": ")
