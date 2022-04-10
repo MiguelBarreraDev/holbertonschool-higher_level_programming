@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-
+Script: Prints all City objects from the database
 """
 if __name__ == '__main__':
     from sqlalchemy import create_engine
