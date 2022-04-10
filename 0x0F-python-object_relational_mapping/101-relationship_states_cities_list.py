@@ -21,8 +21,10 @@ if __name__ == '__main__':
     session = Session()
 
     # Querys
-    rows = session.query(State).join(City).filter(State.id == City.state_id).\
-        order_by(State.id, City.id)
+    rows = session.query(State).join(City).order_by(State.id, City.id)\
+        .filter(City.state_id == State.id)
+
+        
 
     # Show result
     for row in rows:
