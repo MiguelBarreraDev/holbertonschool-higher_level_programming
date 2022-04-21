@@ -1,1 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/bash
+# cURL to the end
+curl -sX GET $1
