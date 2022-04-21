@@ -1,3 +1,3 @@
 #!/bin/bash
 # 3. cURL only methods
-curl -sl $1
+curl -sI $1 | grep "Allow" | cut -d " " -f 2-
