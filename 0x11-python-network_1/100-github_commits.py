@@ -18,7 +18,7 @@ if __name__ == "__main__":
     from sys import argv
 
     [repo, owner] = argv[1:]
-    
+
     commits = api_github("repos/{}/{}/commits?per_page=10".format(owner, repo))
     commits = commits.json()
     for commit in commits:
