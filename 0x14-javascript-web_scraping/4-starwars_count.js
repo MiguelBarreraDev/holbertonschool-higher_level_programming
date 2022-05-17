@@ -1,12 +1,16 @@
 #!/usr/bin/node
 const axios = require('axios');
 const apiUrl = process.argv[2];
-const idOfWedgedAntilles = 'https://swapi-api.hbtn.io/api/people/18/';
 
 axios.get(apiUrl)
   .then(({ data }) => {
+    let count = 0;
     const results = data.results;
-    const films = results.filter(film => film.characters.includes(idOfWedgedAntilles));
-    console.log(films.length);
+    results.forEach(film => {
+      film.characters.forEach(char => {
+        if (char.includes('18')) count++;
+      });
+    });
+    console.log(count);
   })
   .catch(err => console.log(err.message));
