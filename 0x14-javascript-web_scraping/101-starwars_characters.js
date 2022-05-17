@@ -1,15 +1,21 @@
 #!/usr/bin/node
 const axios = require('axios').default;
-const id = process.argv[2];
-const url = `https://swapi-api.hbtn.io/api/films/${id}`;
+const ID = process.argv[2];
 
-axios.get(url)
-  .then(({ data }) => {
-    console.log(data.characters);
-    data.characters.forEach(char => {
-      axios.get(char)
-        .then(({ data }) => console.log(data.name))
-        .catch(err => console.log(err.message));
-    });
-  })
-  .catch(err => console.log(err.message));
+async function getNameChar (url) {
+  const data = await axios.get(url);
+  const { name } = data;
+  console.log(name);
+}
+
+async function getCharsOfFilms (id = ID) {
+  const url = `https://swapi-api.hbtn.io/api/films/${id}`;
+
+  const data = await axios.get(url);
+  const { characters } = data;
+  characters.forEach(async (urlChar) => {
+    await getNameChar(urlChar);
+  });
+}
+
+getCharsOfFilms(ID);
