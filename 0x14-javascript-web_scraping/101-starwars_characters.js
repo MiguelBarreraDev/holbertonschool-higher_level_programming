@@ -5,7 +5,7 @@ const ID = process.argv[2];
 async function getNameChar (url) {
   const data = await axios.get(url);
   const { name } = data;
-  console.log(name);
+  return name;
 }
 
 async function getCharsOfFilms (id = ID) {
@@ -13,9 +13,10 @@ async function getCharsOfFilms (id = ID) {
 
   const data = await axios.get(url);
   const { characters } = data;
-  characters.forEach(async (urlChar) => {
-    await getNameChar(urlChar);
-  });
+  for (const char of characters) {
+    const name = await getNameChar(char);
+    console.log(name);
+  }
 }
 
 getCharsOfFilms(ID);
