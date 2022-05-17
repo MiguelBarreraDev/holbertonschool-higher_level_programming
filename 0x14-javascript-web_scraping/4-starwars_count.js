@@ -7,7 +7,6 @@ axios.get(apiUrl)
   .then(({ data }) => {
     const { results } = data;
     const films = results.filter(film => film.characters.includes(idOfWedgedAntilles));
-    console.log(films);
     console.log(films.length);
   })
   .catch(err => console.log(err));
