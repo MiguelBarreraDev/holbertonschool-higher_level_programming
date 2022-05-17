@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const axios = require('axios').default;
-const fs = require('fs')
+const fs = require('fs');
 const [url, filePath] = process.argv[2].slice(2);
 
 axios.get(url)
