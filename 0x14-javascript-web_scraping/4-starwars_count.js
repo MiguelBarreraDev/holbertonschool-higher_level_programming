@@ -10,6 +10,6 @@ const idOfWedgedAntilles = 'https://swapi-api.hbtn.io/api/people/18/';
     films = results.filter(film => film.characters.includes(idOfWedgedAntilles));
     console.log(films.length);
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 })();
