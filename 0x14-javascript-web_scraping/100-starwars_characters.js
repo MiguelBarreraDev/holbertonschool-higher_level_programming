@@ -1,15 +1,34 @@
 #!/usr/bin/node
 const axios = require('axios').default;
-const id = process.argv[2];
-const url = `https://swapi-api.hbtn.io/api/films/${id}`;
+const ID = process.argv[2];
 
-axios.get(url)
-  .then(({ data }) => {
-    console.log(data.characters);
-    data.characters.forEach((char) => {
-      axios.get(char)
-        .then(({ data }) => console.log(data.name))
-        .catch(err => console.log(err.message));
-    });
-  })
-  .catch(err => console.log(err.message));
+async function getCharName (url) {
+  const { data } = await axios.get(url);
+  return data.name;
+}
+
+async function getCharactersFromFilm ({ id } = { id: ID }) {
+  const url = `https://swapi-api.hbtn.io/api/films/${id}`;
+  const { data } = await axios.get(url);
+  return data.characters;
+}
+
+async function main () {
+  let nameList = [];
+
+  try {
+    const charactersList = await getCharactersFromFilm({id: ID});
+    for (let char of charactersList) {
+      let name = await getCharName(char);
+      nameList.push(name);
+    }
+  } catch (err) {
+    console.error(err.message);
+    return err;
+  }
+
+  console.log(nameList.join("\n"));
+  return 1;
+}
+
+main(ID);
