@@ -5,7 +5,7 @@ const apiUrl = process.argv[2];
 axios.get(apiUrl)
   .then(({ data }) => {
     let count = 0;
-    const results = data.results;
+    const { results } = data;
     results.forEach(film => {
       film.characters.forEach(char => {
         if (char.includes('18')) count++;
