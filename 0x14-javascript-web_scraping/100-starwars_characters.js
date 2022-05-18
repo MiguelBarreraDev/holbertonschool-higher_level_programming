@@ -14,21 +14,15 @@ async function getCharactersFromFilm ({ id } = { id: ID }) {
 }
 
 async function main () {
-  let nameList = [];
-
   try {
-    const charactersList = await getCharactersFromFilm({id: ID});
-    for (let char of charactersList) {
-      let name = await getCharName(char);
-      nameList.push(name);
+    const charactersList = await getCharactersFromFilm({ id: ID });
+    for (const char of charactersList) {
+      const name = await getCharName(char);
+      console.log(name);
     }
   } catch (err) {
     console.error(err.message);
-    return err;
   }
-
-  console.log(nameList.join("\n"));
-  return 1;
 }
 
 main(ID);
